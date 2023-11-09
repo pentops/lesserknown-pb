@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package lesserknown.irs.v1;
+
+import "buf/validate/validate.proto";
+
+option go_package = "github.com/pentops/lesserknown-go/irs/v1/irs_pb";
+
+message SSN {
+  string number = 1 [(buf.validate.field).string = {pattern: "^\\d{3}-\\d{2}-\\d{4}$"}];
+}
+
+message ITIN {
+  string number = 1 [(buf.validate.field).string = {pattern: "^9\\d{2}-\\d{2}-\\d{4}$"}];
+}
+
+message EIN {
+  string number = 1 [(buf.validate.field).string = {pattern: "^\\d{2}-\\d{7}$"}];
+}
